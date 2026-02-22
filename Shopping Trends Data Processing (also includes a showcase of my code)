@@ -1,0 +1,75 @@
+SELECT TRIM(Location) FixedTyposWhenCustomersWriteTheirLocation 
+FROM shopping_trends_updated;
+
+--fixes typos customers make when writing their Gender.
+SELECT TRIM(Gender) FixesTyposCustomersMakeWhenWritingTheirGender 
+FROM shopping_trends_updated;
+
+--fixes typos customers make when writing their size.
+SELECT TRIM(Size) FixesTyposCustomersMakeWhenWritingTheirSize 
+FROM shopping_trends_updated;
+
+--fixes typos customers make when writing the color.
+SELECT TRIM(Color) FixesTyposCustomersMakeWhenWritingTheirColor 
+FROM shopping_trends_updated;
+
+--fixes typos customers make when writing the type of Clothes They Want.
+SELECT TRIM(Season) FixesTyposCustomersMakeWhenWritingTheirSize 
+FROM shopping_trends_updated;
+
+--If A Customer Gets A 100 Percent Discount The Amount Will Show Up As 0
+SELECT ISNULL(Purchase_Amount_Usd, 0) 
+AS IfACustomerGetsA100PercentDiscountTheAmountWillShowUpAs0 
+FROM shopping_trends_updated;
+
+--stops the Computer From Crashing When Dividing By 0
+SELECT Purchase_Amount_Usd / NULLIF(Purchase_Amount_Usd, 0) 
+AS PreventsTheComputerFromCrashing 
+FROM shopping_trends_updated;
+
+--Rounds Long messy decimals like 19.999999 down to a clean $20.00.
+SELECT ROUND(Purchase_Amount_Usd, 2) 
+AS CleanedUpDecimalNumbers 
+FROM shopping_trends_updated;
+
+--Rounds A Number to the nearest whole dollar (6.1 becomes 7)
+SELECT CEILING(Purchase_Amount_Usd) 
+FROM shopping_trends_updated;
+
+--tells you if a number is a positive or negative
+SELECT SIGN(Purchase_Amount_Usd) 
+FROM shopping_trends_updated;
+
+--finds the first purchase a customer has ever made
+SELECT MIN(Purchase_Amount_Usd) AS FirstPurchase 
+FROM shopping_trends_updated;
+
+--finds the single biggest sale ever made
+SELECT MAX(Purchase_Amount_Usd) AS SingleBiggestSale 
+FROM shopping_trends_updated;
+
+SELECT SUM(Purchase_Amount_Usd) 
+RoundsUpEveryPurchaseAndMakesItOneBigTotal 
+FROM shopping_trends_updated;
+
+--ranks every customer from the Most Spent To The Least Spent
+SELECT * 
+FROM shopping_trends_updated 
+ORDER BY Purchase_Amount_Usd DESC;
+
+--the opposite of desc
+SELECT * 
+FROM shopping_trends_updated 
+ORDER BY Purchase_Amount_Usd ASC;
+
+--shows the top 5 best customers
+SELECT TOP 5 * 
+FROM shopping_trends_updated 
+ORDER BY Purchase_Amount_Usd DESC;
+
+SELECT * FROM shopping_trends_updated;
+
+--finds Locations Starting With "Hawaii".
+SELECT * 
+FROM shopping_trends_updated 
+WHERE Location LIKE 'Hawaii%';
